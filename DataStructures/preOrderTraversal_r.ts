@@ -11,23 +11,31 @@ class TreeNode {
 }
 
 function preorderTraversal(root: TreeNode | null): number[] {
-  const node: any[] = [ root!.val, root!.left, root!.right ];
   const res: number[] = [];
+  if (!root.val) return res;
 
-  for (let n = 0; n < node.length; n++) {
-    if ( node[n] === 0 ) return res;
-    if (node[n] === null ) continue;
-    if (typeof node[n] === 'number') res.push(node[n]); 
-    if (node[n] instanceof TreeNode) return res.concat(preorderTraversal(node[n]));
-  }
+  const travers = (node: TreeNode): number[] => {
+    if (node.left) {
+      res.push(node.val);
+      travers(node.left);
+    } else {
+      res.push(node.val);
+    }
+    if (node.right) travers(node.right);
+    return res;
+  };
+
+  res.push(root.val);
+  if (root.left) travers(root.left);
+  if (root.right) travers(root.right);
   return res;
 }
 
-const ex1 = new TreeNode(1, null, new TreeNode(2, new TreeNode(3)));
-const ex2 = new TreeNode();
-const ex3 = new TreeNode(1);
-const ex4 = new TreeNode(1, new TreeNode(2));
-const ex5 = new TreeNode(1, null, new TreeNode(2));
+const ex1 = new TreeNode(1, null, new TreeNode(2, new TreeNode(3)));  // [1, 2, 3]
+const ex2 = new TreeNode();                                           // []
+const ex3 = new TreeNode(1);                                          // [1]
+const ex4 = new TreeNode(1, new TreeNode(2));                         // [1, 2]
+const ex5 = new TreeNode(1, null, new TreeNode(2));                   // [1, 2]
 
 console.log(preorderTraversal(ex1));
 console.log(preorderTraversal(ex2));
