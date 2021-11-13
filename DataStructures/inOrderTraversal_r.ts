@@ -12,28 +12,23 @@ class TreeNode {
 
 function inorderTraversal(root: TreeNode | null): number[] {
   const res: number[] = [];
-  const checkChilds = (child: TreeNode | null): boolean => { 
-    return (child.left !== null || child.right !== null);
-  }
-  const getRootOf = (child: TreeNode): number => { return child.val; }
-
   if (!root.val) return res;
-  if (!root.left && !root.right) { 
-    res.push(root.val);
+
+  const travers = (node: TreeNode): number[] => {
+    if (node.left) { 
+      travers(node.left);
+      res.push(node.val);
+    } else {
+      res.push(node.val);
+    }
+    if (node.right) travers(node.right);
     return res;
-  }
-  if (root.left) {
-    if (checkChilds(root.left)) return res.concat(inorderTraversal(root.left));
-    else res.push(getRootOf(root.left));
-  } else { 
-    res.push(root.val);
-  }
-  if (root.right) {
-    if (checkChilds(root.right)) return res.concat(inorderTraversal(root.right));
-    else res.push(getRootOf(root.right));;
-  } else { 
-    res.push(root.val);
-  }
+  };
+  
+  if (root.left) travers(root.left);
+  res.push(root.val);
+  if (root.right) travers(root.right);
+
   return res;
 }
 
