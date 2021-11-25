@@ -14,7 +14,7 @@ function inorderTraversal(root: TreeNode | null): number[] {
   const res: number[] = [];
   if (!root.val) return res;
 
-  const travers = (node: TreeNode): number[] => {
+  const travers = (node: TreeNode) => {
     if (node.left) { 
       travers(node.left);
       res.push(node.val);
@@ -22,24 +22,21 @@ function inorderTraversal(root: TreeNode | null): number[] {
       res.push(node.val);
     }
     if (node.right) travers(node.right);
-    return res;
   };
   
-  if (root.left) travers(root.left);
-  res.push(root.val);
-  if (root.right) travers(root.right);
+  travers(root);
 
   return res;
 }
 
-const ex1 = new TreeNode(1, null, new TreeNode(2, new TreeNode(3))); // [1, 3, 2]
-const ex2 = new TreeNode();                                          // []
-const ex3 = new TreeNode(1);                                         // [1]
-const ex4 = new TreeNode(1, new TreeNode(2));                        // [2, 1]
-const ex5 = new TreeNode(1, null, new TreeNode(2));                  // [1, 2]
+const ex1 = new TreeNode(1, null, new TreeNode(2, new TreeNode(3)));
+const ex2 = new TreeNode();
+const ex3 = new TreeNode(1);
+const ex4 = new TreeNode(1, new TreeNode(2));
+const ex5 = new TreeNode(1, null, new TreeNode(2));
 
-console.log(inorderTraversal(ex1));
-console.log(inorderTraversal(ex2));
-console.log(inorderTraversal(ex3));
-console.log(inorderTraversal(ex4));
-console.log(inorderTraversal(ex5));
+console.log(inorderTraversal(ex1)); // [1, 3, 2]
+console.log(inorderTraversal(ex2)); // []
+console.log(inorderTraversal(ex3)); // [1]
+console.log(inorderTraversal(ex4)); // [2, 1]
+console.log(inorderTraversal(ex5)); // [1, 2]
