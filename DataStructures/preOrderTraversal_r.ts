@@ -25,14 +25,14 @@ function preorderTraversal(root: TreeNode | null): number[] {
   return res;
 }
 
-const ex1 = new TreeNode(1, null, new TreeNode(2, new TreeNode(3)));  // [1, 2, 3]
-const ex2 = new TreeNode();                                           // []
-const ex3 = new TreeNode(1);                                          // [1]
-const ex4 = new TreeNode(1, new TreeNode(2));                         // [1, 2]
-const ex5 = new TreeNode(1, null, new TreeNode(2));                   // [1, 2]
+const ex1 = new TreeNode(1, null, new TreeNode(2, new TreeNode(3)));
+const ex2 = new TreeNode();
+const ex3 = new TreeNode(1);
+const ex4 = new TreeNode(1, new TreeNode(2));
+const ex5 = new TreeNode(1, null, new TreeNode(2));
 
-console.log(preorderTraversal(ex1));
-console.log(preorderTraversal(ex2));
-console.log(preorderTraversal(ex3));
-console.log(preorderTraversal(ex4));
-console.log(preorderTraversal(ex5));
+console.log(preorderTraversal(ex1)); // [1, 2, 3]
+console.log(preorderTraversal(ex2)); // []
+console.log(preorderTraversal(ex3)); // [1]
+console.log(preorderTraversal(ex4)); // [1, 2]
+console.log(preorderTraversal(ex5)); // [1, 2]
