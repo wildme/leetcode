@@ -14,20 +14,14 @@ function preorderTraversal(root: TreeNode | null): number[] {
   const res: number[] = [];
   if (!root.val) return res;
 
-  const travers = (node: TreeNode): number[] => {
-    if (node.left) {
-      res.push(node.val);
-      travers(node.left);
-    } else {
-      res.push(node.val);
-    }
+  const travers = (node: TreeNode) => {
+    res.push(node.val);
+    if (node.left) travers(node.left);
     if (node.right) travers(node.right);
-    return res;
   };
 
-  res.push(root.val);
-  if (root.left) travers(root.left);
-  if (root.right) travers(root.right);
+  travers(root);
+
   return res;
 }
 
