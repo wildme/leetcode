@@ -12,7 +12,7 @@ class TreeNode {
 
 function preorderTraversal(root: TreeNode | null): number[] {
   const res: number[] = [];
-  if (!root.val) return res;
+  if (!root) return res;
 
   const travers = (node: TreeNode) => {
     res.push(node.val);

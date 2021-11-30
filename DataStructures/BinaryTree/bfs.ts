@@ -14,7 +14,7 @@ function levelOrder(root: TreeNode | null): number[][] {
   const res: number[][] = [];
   let level: number = 0;
 
-  if (!root.val) return res;
+  if (!root) return res;
 
   const travers = (node: TreeNode, level: number) => {
     if ((node.left || node.right) && !res[level]) res[level] = [];
