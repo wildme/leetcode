@@ -13,10 +13,10 @@ class TreeNode {
 function maxDepth(root: TreeNode | null): number {
   let max: number = 0;
 
-  if (!root.val) return max;
+  if (!root) return max;
 
   const travers = (node: TreeNode, depth: number) => {
-    if (node.val) { 
+    if (node) { 
       depth++;
       max = Math.max(max, depth);
     }

@@ -13,6 +13,7 @@ class TreeNode {
 
 function hasPathSum(root: TreeNode | null, targetSum: number): boolean {
   let res: boolean = false;
+  if (!root) return res;
 
   const travers = (node: TreeNode, sum: number) => {
     if (node.left && !res) travers(node.left, sum + node.val);
